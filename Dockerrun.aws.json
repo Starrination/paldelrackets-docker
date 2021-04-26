@@ -1,0 +1,26 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "app",
+      "image": "453510142829.dkr.ecr.eu-west-1.amazonaws.com/padelrackets-docker-app",
+      "hostname": "app",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "nginx",
+      "image": "453510142829.dkr.ecr.eu-west-1.amazonaws.com/padelrackets-docker-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["app"],
+      "memory": 64
+    }
+  ]
+}
